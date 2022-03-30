@@ -6,7 +6,7 @@
 
 class Account : public Money {
 private:
-
+Money balance;
 std::vector<Money> depositBalance;
 std::vector<Money> withdrawalBalance;
 
@@ -21,8 +21,8 @@ void makeDeposit(Money money);
 void makeWithdrawals(Money money);
 
 Money calculateBalance();
+friend std::ostream& operator<<(std::ostream& out, const Account& amount);
 
-virtual ~Account();
 
 };
 

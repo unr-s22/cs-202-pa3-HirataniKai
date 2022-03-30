@@ -16,64 +16,54 @@ void Account::makeWithdrawals(Money money){
 
 Money Account::calculateBalance(){
 
-    Money m;
-
     if (flag == 1){
-        auto sum_deposits = std::accumulate(depositBalance.begin(), depositBalance.end(), m);
+        Money sum_deposits;
+        for(Money a : depositBalance)
+        {
+            sum_deposits + a;
+        }
+        Money sum_withdrawal;
+        for(Money b : withdrawalBalance)
+        {
+            sum_deposits + b;
+        }
+        
+        balance + sum_deposits;
 
-        auto sum_withdrawal = std::accumulate(withdrawalBalance.begin(), withdrawalBalance.end(), m);
+        balance - sum_withdrawal;
 
-        auto finalBalance = sum_deposits - sum_withdrawal;
+        //finalBalance.allCents();
 
-        finalBalance.allCents();
-
-        std::cout << finalBalance << std::endl;
+        std::cout << balance << std::endl;
 
         flag = 0;
 
-        return finalBalance;
     }
-
+    return balance;
 }
 
-
+std::ostream& operator<<(std::ostream& out, const Account& obj)
+{
+    out <<"Account Details\nCurrent Balance:"<<obj.balance<<"\n";
+    return out;
+}
 
 /*
-Account::Account(Money m){
-    deposits.push_back(m);
+std::cout << account << std::endl;
 
-}
-
-void Account::makeWithdrawals(Money m){
-    withdrawals.push_back(m);
-    ismoney.push_back(true);
-
-}
-
-void Account::printDetails(Money m){
-
-    ss << "Account Details" << std::endl;
-    ss << "--------------------------" << std::endl;
-    ss << "Current Balance: " << std::endl;
-    ss << m << std::endl;
-
-}
-
-if (ismoney.size()>0){
-    ss << "--------------------------" << std::endl;
-    ss << "Number of Deposits: ";
-    ss << deposits.size()-1 << std::endl;
-    for (int i=1; i < deposits.size(); i++){
-        ss << "(" << (i) <<") "<< deposits[i] << std::endl;
-    }
-    ss << "--------------------------" << std::endl;
-    ss << "Number of Withdrawals: ";
-    ss << withdrawals.size() << std::endl;
-    ss << "-------------------------" << std::endl;
-    for (int j=0; j < withdrawals.size(); j++){
-        ss << "(" << (j+1) <<") "<< withdrawals[j] << std::endl;
-    }
-}
-    std::cout << ss.str() << std::endl;
-}
+// this code should print
+Account Details
+--------------------------
+Current Balance:$100.55
+--------------------------
+Number of Deposits: 3
+--------------------
+(1) $100.33
+(2) $100.33
+(3) $100.33
+--------------------------
+Number of Withdrawals: 1
+--------------------------
+(1) $200.44
+----
 */
