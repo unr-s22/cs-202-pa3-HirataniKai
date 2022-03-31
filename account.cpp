@@ -36,10 +36,6 @@ void Account::calculateBalance(){
 
         balance - sum_withdrawal;
 
-        //finalBalance.allCents();
-
-        std::cout << balance << std::endl;
-
         flag = 0;
 
     }
@@ -48,15 +44,20 @@ void Account::calculateBalance(){
 std::ostream& operator<<(std::ostream& out, Account obj)
 {
     obj.calculateBalance();
-    out <<"Account Details\n\nCurrent Balance: "<<obj.balance<<"\n\nNumber of Deposits: "<<obj.depositBalance.size()<<std::endl;
+
+    out <<"Account Details\nCurrent Balance: "<<obj.balance<<"\nNumber of Deposits: "<<obj.depositBalance.size()<<std::endl;
+    int count =0;
     for(Money g : obj.depositBalance)
     {
-        out<<g<<std::endl;
+        count++;
+        out<<"("<<count<<") "<<g<<std::endl;
     }
     out<<"\nNumber of Withdrawls: "<<obj.withdrawalBalance.size()<<std::endl;
+    int iter=0;
     for(Money h : obj.withdrawalBalance)
     {
-        out<<h<<std::endl;
+        iter++;
+        out<<"("<<iter<<") "<<h<<std::endl;
     }
     return out;
 }

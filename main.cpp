@@ -5,7 +5,7 @@
 int main(){
     Account a(300,23);
     std::cout<<a<<std::endl;
-    a.makeDeposit(Money(200,0));
+    a.makeDeposit(Money(200,00));
     a.makeDeposit(Money(300,24));
     a.makeDeposit(Money(501,22));
     std::cout<<a<<std::endl;
@@ -17,6 +17,8 @@ int main(){
     Money n(200,20);
     Money o(100,10);
 
+    std::cout<<"Tests for operators: M = $100.10, N = $200.20, O = $100.10"<<std::endl;
+    
     if(m < n){
      std::cout<<"m<n"<<std::endl;
     }else 
@@ -44,8 +46,26 @@ int main(){
     {
         std::cout<<"no"<<std::endl;
     }
+
+    if(m <= n){
+     std::cout<<"m<=n"<<std::endl;
+    }else 
+    {
+        std::cout<<"no"<<std::endl;
+    }
+
+    if(n >= m){
+     std::cout<<"m>=n"<<std::endl;
+    }else 
+    {
+        std::cout<<"no"<<std::endl;
+    }
     return 0;
+
+    
 }
+
+//(<,>,<=,>=,!=,==)
 
 /*
 In your `main` function in `main.cpp`,
