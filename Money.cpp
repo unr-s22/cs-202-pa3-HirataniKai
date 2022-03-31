@@ -1,6 +1,12 @@
 
 #include "Money.h"
 
+void Money::setBalance(int d, int c)
+{
+    dollars=d;
+    cents=c;
+}
+
 Money::Money(int doll, int cent)
 {
     dollars=doll;

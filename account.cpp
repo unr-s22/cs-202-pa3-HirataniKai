@@ -1,6 +1,10 @@
 #include "account.h"
 #include <numeric>
 
+Account::Account(int d, int c){
+    balance.setBalance(d,c);
+}
+
 void Account::makeDeposit(Money money){
 
     depositBalance.push_back(money);
@@ -14,7 +18,7 @@ void Account::makeWithdrawals(Money money){
 
 }
 
-Money Account::calculateBalance(){
+void Account::calculateBalance(){
 
     if (flag == 1){
         Money sum_deposits;
@@ -25,7 +29,7 @@ Money Account::calculateBalance(){
         Money sum_withdrawal;
         for(Money b : withdrawalBalance)
         {
-            sum_deposits + b;
+            sum_deposits - b;
         }
         
         balance + sum_deposits;
@@ -39,12 +43,21 @@ Money Account::calculateBalance(){
         flag = 0;
 
     }
-    return balance;
 }
 
-std::ostream& operator<<(std::ostream& out, const Account& obj)
+std::ostream& operator<<(std::ostream& out, Account obj)
 {
-    out <<"Account Details\nCurrent Balance:"<<obj.balance<<"\n";
+    obj.calculateBalance();
+    out <<"Account Details\n\nCurrent Balance: "<<obj.balance<<"\n\nNumber of Deposits: "<<obj.depositBalance.size()<<std::endl;
+    for(Money g : obj.depositBalance)
+    {
+        out<<g<<std::endl;
+    }
+    out<<"\nNumber of Withdrawls: "<<obj.withdrawalBalance.size()<<std::endl;
+    for(Money h : obj.withdrawalBalance)
+    {
+        out<<h<<std::endl;
+    }
     return out;
 }
 

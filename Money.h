@@ -11,6 +11,7 @@ class Money
     int cents;
 
     public:
+    void setBalance(int d, int c);
     Money(int doll, int cent);
     Money();
     bool operator <(Money obj);

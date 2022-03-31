@@ -4,7 +4,7 @@
 #include <vector>
 #include "Money.h"
 
-class Account : public Money {
+class Account{
 private:
 Money balance;
 std::vector<Money> depositBalance;
@@ -15,13 +15,12 @@ int count = {0};
 
 public:
 
-Account(int dollars, int cents): Money(dollars, cents){
-}
+Account(int dollars, int cents);
 void makeDeposit(Money money);
 void makeWithdrawals(Money money);
 
-Money calculateBalance();
-friend std::ostream& operator<<(std::ostream& out, const Account& amount);
+void calculateBalance();
+friend std::ostream& operator<<(std::ostream& out, Account amount);
 
 
 };
